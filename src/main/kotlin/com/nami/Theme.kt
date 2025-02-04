@@ -2,7 +2,6 @@ package com.nami
 
 import java.awt.Color
 import java.io.FileInputStream
-import java.io.IOException
 import java.nio.file.Path
 import java.util.*
 
@@ -23,7 +22,7 @@ class Theme private constructor() {
         var BOARD_PIECE_BLACK_COLOR: Color = DEFAULT_BOARD_PIECE_BLACK_COLOR
 
         init {
-            select("lichess");
+            select("lichess")
         }
 
         fun select(name: String) {

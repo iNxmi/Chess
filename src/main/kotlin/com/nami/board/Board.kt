@@ -86,9 +86,9 @@ class Board(val size: Vector2i) : JPanel() {
     }
 
     fun isMovePossible(position: Vector2i, team: Team): Boolean {
-        if (position.x < 0 || position.x >= size!!.x) return false
+        if (position.x < 0 || position.x >= size.x) return false
 
-        if (position.y < 0 || position.y >= size!!.y) return false
+        if (position.y < 0 || position.y >= size.y) return false
 
         val piece = getPiece(position) ?: return true
 

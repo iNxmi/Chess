@@ -4,7 +4,7 @@ import com.nami.board.Board
 import org.joml.Vector2i
 
 abstract class Piece(
-    val type: Type,
+    private val type: Type,
     val board: Board,
     val team: Team,
     val position: Vector2i

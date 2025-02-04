@@ -2,7 +2,6 @@ package com.nami.board.piece
 
 import com.nami.board.Board
 import org.joml.Vector2i
-import java.awt.Point
 import kotlin.math.max
 
 class PieceBishop(

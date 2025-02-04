@@ -15,7 +15,8 @@ class Tile(
     val position: Vector2i,
 ) : JButton() {
 
-    private var color = if (((position.x + (if (position.y % 2 == 0) 1 else 0)) % 2 == 1)) Theme.BOARD_TILE_WHITE_COLOR else Theme.BOARD_TILE_BLACK_COLOR
+    private var color =
+        if (((position.x + (if (position.y % 2 == 0) 1 else 0)) % 2 == 1)) Theme.BOARD_TILE_WHITE_COLOR else Theme.BOARD_TILE_BLACK_COLOR
 
     private val foreground = JLabel()
     var piece: Piece? = null

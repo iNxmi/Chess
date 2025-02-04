@@ -94,5 +94,5 @@ class PieceQueen(
 
         return positions
     }
-    
+
 }
