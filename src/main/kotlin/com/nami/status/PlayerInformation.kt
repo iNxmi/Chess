@@ -1,7 +1,7 @@
 package com.nami.status
 
 import com.nami.Theme
-import com.nami.board.piece.Piece.Team
+import com.nami.piece.Piece.Team
 import java.awt.Color
 import java.awt.Font
 import java.awt.GridLayout
@@ -10,7 +10,7 @@ import javax.swing.JLabel
 import javax.swing.JPanel
 import javax.swing.SwingConstants
 
-class Status(
+class PlayerInformation(
     team: Team
 ) : JPanel() {
 

@@ -1,13 +1,12 @@
 package com.nami.board
 
-import com.nami.board.piece.*
-import com.nami.board.piece.Piece.Team
-import com.nami.board.tile.Tile
-import com.nami.board.tile.TileActionListener
 import com.nami.move.Move
+import com.nami.piece.*
+import com.nami.piece.Piece.Team
 import org.joml.Vector2i
 import java.awt.Dimension
 import java.awt.GridLayout
+import java.awt.event.MouseEvent
 import java.util.*
 import javax.swing.JPanel
 
@@ -15,7 +14,8 @@ class Board(val size: Vector2i) : JPanel() {
 
     companion object {
         val TILE_SIZE: Int = 128
-        val PIECE_SIZE: Int = 90
+        val PIECE_SIZE: Int = 112
+        val HIGHLIGHT_SIZE: Int = 128
     }
 
     private val tiles = mutableMapOf<Vector2i, Tile>()
@@ -29,11 +29,11 @@ class Board(val size: Vector2i) : JPanel() {
     }
 
     private fun createTiles() {
-        val listener = TileActionListener(this)
+        val listener = TileHandler(this)
 
         for (y in 0 until size.y) for (x in 0 until size.x) {
             val tile = Tile(this, Vector2i(x, y))
-            tile.addActionListener(listener)
+            tile.addMouseListener(listener)
 
             tiles[Vector2i(x, y)] = tile
             add(tile)
@@ -93,6 +93,45 @@ class Board(val size: Vector2i) : JPanel() {
         val piece = getPiece(position) ?: return true
 
         return piece.team != team
+    }
+
+    var selected: Vector2i? = null
+    fun tilePressed(position: Vector2i, button: Int) {
+
+        if (button == MouseEvent.BUTTON1) {
+
+            removeHighlighting()
+
+            if (selected != null && selected != position) {
+                val selectedPiece = getPiece(selected!!) ?: throw IllegalStateException()
+                if (selectedPiece.getPossiblePositions().contains(position)) {
+                    movePiece(selected!!, position)
+                    selected = null
+                    return
+                }
+            }
+
+            selected = null
+
+            val piece = getPiece(position) ?: return
+            selected = position
+            highlightPossibleMoves(piece)
+        } else if (button == MouseEvent.BUTTON3) {
+            selected = null
+            removeHighlighting()
+        }
+    }
+
+    private fun highlightPossibleMoves(piece: Piece) {
+        getTile(piece.position).highlight(piece.team)
+        piece.getPossiblePositions().forEach { position ->
+            val tile = getTile(position)
+            tile.highlight(piece.team)
+        }
+    }
+
+    private fun removeHighlighting() {
+        tiles.forEach { (_, tile) -> tile.removeHighlight() }
     }
 
 }

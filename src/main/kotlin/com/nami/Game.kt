@@ -1,9 +1,9 @@
 package com.nami
 
 import com.nami.board.Board
-import com.nami.board.piece.Piece
-import com.nami.move.MoveHistory
-import com.nami.status.Status
+import com.nami.piece.Piece
+import com.nami.status.GameInformation
+import com.nami.status.PlayerInformation
 import org.joml.Vector2i
 import javax.swing.Box
 import javax.swing.JFrame
@@ -11,22 +11,22 @@ import javax.swing.JFrame
 class Game : JFrame() {
 
     private val board = Board(Vector2i(8, 8))
-    private val statusBlack: Status = Status(Piece.Team.BLACK)
-    private val statusWhite: Status = Status(Piece.Team.WHITE)
-    private val moveHistory: MoveHistory = MoveHistory()
+    private val informationBlack: PlayerInformation = PlayerInformation(Piece.Team.BLACK)
+    private val informationWhite: PlayerInformation = PlayerInformation(Piece.Team.WHITE)
+    private val informationGame: GameInformation = GameInformation()
 
     init {
         title = "Chess"
         defaultCloseOperation = EXIT_ON_CLOSE
 
         val vbox = Box.createVerticalBox()
-        vbox.add(statusBlack)
+        vbox.add(informationBlack)
         vbox.add(board)
-        vbox.add(statusWhite)
+        vbox.add(informationWhite)
 
         val hbox = Box.createHorizontalBox()
         hbox.add(vbox)
-        hbox.add(moveHistory)
+        hbox.add(informationGame)
 
         add(hbox)
         pack()
@@ -74,8 +74,4 @@ class Game : JFrame() {
         board.createPiece(Vector2i(4, 7), Piece.Type.KING, Piece.Team.WHITE)
     }
 
-}
-
-fun main() {
-    val game = Game()
 }

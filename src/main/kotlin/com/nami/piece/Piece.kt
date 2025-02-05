@@ -1,4 +1,4 @@
-package com.nami.board.piece
+package com.nami.piece
 
 import com.nami.board.Board
 import org.joml.Vector2i
