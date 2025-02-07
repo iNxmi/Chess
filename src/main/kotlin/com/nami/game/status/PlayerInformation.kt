@@ -1,7 +1,7 @@
-package com.nami.status
+package com.nami.game.status
 
-import com.nami.Theme
-import com.nami.piece.Piece.Team
+import com.nami.theme.Theme
+import com.nami.game.piece.Piece.Team
 import java.awt.Color
 import java.awt.Font
 import java.awt.GridLayout

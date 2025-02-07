@@ -1,10 +1,10 @@
-package com.nami.piece
+package com.nami.game.piece
 
-import com.nami.board.Board
+import com.nami.game.board.Board
 import org.joml.Vector2i
 
 abstract class Piece(
-    private val type: Type,
+    val type: Type,
     val board: Board,
     val team: Team,
     val position: Vector2i

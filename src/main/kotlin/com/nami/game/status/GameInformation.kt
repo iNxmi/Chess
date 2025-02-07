@@ -1,4 +1,4 @@
-package com.nami.status
+package com.nami.game.status
 
 import javax.swing.Box
 import javax.swing.BoxLayout

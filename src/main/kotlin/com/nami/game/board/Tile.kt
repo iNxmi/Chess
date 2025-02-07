@@ -1,9 +1,8 @@
-package com.nami.board
+package com.nami.game.board
 
-import com.nami.Theme
-import com.nami.piece.Piece
+import com.nami.theme.Theme
+import com.nami.game.piece.Piece
 import org.joml.Vector2i
-import java.awt.Color
 import java.awt.Dimension
 import java.awt.Font
 import java.awt.Rectangle
@@ -11,7 +10,6 @@ import javax.swing.JLabel
 import javax.swing.JLayeredPane
 import javax.swing.JPanel
 import javax.swing.SwingConstants
-import javax.swing.border.LineBorder
 
 class Tile(
     val board: Board,

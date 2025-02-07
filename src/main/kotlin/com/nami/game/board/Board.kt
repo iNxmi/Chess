@@ -1,25 +1,23 @@
-package com.nami.board
+package com.nami.game.board
 
-import com.nami.move.Move
-import com.nami.piece.*
-import com.nami.piece.Piece.Team
+import com.nami.game.piece.*
+import com.nami.game.piece.Piece.Team
 import org.joml.Vector2i
 import java.awt.Dimension
 import java.awt.GridLayout
 import java.awt.event.MouseEvent
-import java.util.*
+import javax.swing.JOptionPane
 import javax.swing.JPanel
 
 class Board(val size: Vector2i) : JPanel() {
 
     companion object {
-        val TILE_SIZE: Int = 128
-        val PIECE_SIZE: Int = 112
-        val HIGHLIGHT_SIZE: Int = 128
+        val TILE_SIZE: Int = 64
+        val PIECE_SIZE: Int = 56
+        val HIGHLIGHT_SIZE: Int = 64
     }
 
     private val tiles = mutableMapOf<Vector2i, Tile>()
-    private val moves = LinkedList<Move>()
 
     init {
         layout = GridLayout(size.x, size.y)
@@ -50,7 +48,7 @@ class Board(val size: Vector2i) : JPanel() {
             Piece.Type.QUEEN -> PieceQueen(this, team, position)
         }
 
-        setPiece(position, piece)
+        setPiece(piece.position, piece)
     }
 
     fun getTile(position: Vector2i): Tile {
@@ -65,7 +63,8 @@ class Board(val size: Vector2i) : JPanel() {
     fun movePiece(position: Vector2i, destination: Vector2i): Boolean {
         val piece = getPiece(position)!!
 
-        if (!piece.getPossiblePositions().contains(destination)) return false
+        if (!piece.getPossiblePositions().contains(destination))
+            return false
 
         val positionTile = getTile(position)
         val destinationTile = getTile(destination)
@@ -75,7 +74,32 @@ class Board(val size: Vector2i) : JPanel() {
 
         piece.move(destination)
 
-        moves.add(Move(position, destination))
+//        moves.add(Move(position, destination))
+
+        if (piece.type != Piece.Type.PAWN)
+            return true
+
+        if (destination.y <= 0 || destination.y >= size.y - 1) {
+            val options = arrayOf(
+                Piece.Type.BISHOP,
+                Piece.Type.KNIGHT,
+                Piece.Type.QUEEN,
+                Piece.Type.ROOK
+            )
+
+            val index = JOptionPane.showOptionDialog(
+                this,
+                "Select Piece.Type",
+                "Convert Pawn",
+                JOptionPane.OK_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                Piece.Type.QUEEN
+            )
+
+            createPiece(destination, options[index], piece.team)
+        }
 
         return true
     }

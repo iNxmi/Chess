@@ -1,6 +1,6 @@
-package com.nami.piece
+package com.nami.game.piece
 
-import com.nami.board.Board
+import com.nami.game.board.Board
 import org.joml.Vector2i
 
 class PieceKing(

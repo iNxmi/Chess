@@ -1,0 +1,48 @@
+{
+  "size": {
+    "x": 8,
+    "y": 8
+  },
+  "pieces": {
+    "0": {
+      "0": {"type": "rook", "team": "black"},
+      "1": {"type": "knight", "team": "black"},
+      "2": {"type": "bishop", "team": "black"},
+      "3": {"type": "queen", "team": "black"},
+      "4": {"type": "king", "team": "black"},
+      "5": {"type": "bishop", "team": "black"},
+      "6": {"type": "knight", "team": "black"},
+      "7": {"type": "rook", "team": "black"}
+    },
+    "1": {
+      "0": {"type": "pawn", "team": "black"},
+      "1": {"type": "pawn", "team": "black"},
+      "2": {"type": "pawn", "team": "black"},
+      "3": {"type": "pawn", "team": "black"},
+      "4": {"type": "pawn", "team": "black"},
+      "5": {"type": "pawn", "team": "black"},
+      "6": {"type": "pawn", "team": "black"},
+      "7": {"type": "pawn", "team": "black"}
+    },
+    "6": {
+      "0": {"type": "pawn", "team": "white"},
+      "1": {"type": "pawn", "team": "white"},
+      "2": {"type": "pawn", "team": "white"},
+      "3": {"type": "pawn", "team": "white"},
+      "4": {"type": "pawn", "team": "white"},
+      "5": {"type": "pawn", "team": "white"},
+      "6": {"type": "pawn", "team": "white"},
+      "7": {"type": "pawn", "team": "white"}
+    },
+    "7": {
+      "0": {"type": "rook", "team": "white"},
+      "1": {"type": "knight", "team": "white"},
+      "2": {"type": "bishop", "team": "white"},
+      "3": {"type": "queen", "team": "white"},
+      "4": {"type": "king", "team": "white"},
+      "5": {"type": "bishop", "team": "white"},
+      "6": {"type": "knight", "team": "white"},
+      "7": {"type": "rook", "team": "white"}
+    }
+  }
+}

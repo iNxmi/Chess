@@ -1,4 +1,4 @@
-package com.nami.board
+package com.nami.game.board
 
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener

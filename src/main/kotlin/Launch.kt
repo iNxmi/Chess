@@ -1,6 +1,11 @@
-import com.nami.Game
+import com.nami.Window
+import com.nami.scene.SceneGame
+import com.nami.scene.SceneMenu
+import javax.swing.UIManager
 
 
 fun main() {
-    val game = Game()
+    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
+
+    Window.init().setScene(SceneMenu())
 }
